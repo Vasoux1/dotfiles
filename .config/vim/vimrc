@@ -1,0 +1,81 @@
+:set number
+:set relativenumber
+:set autoindent
+:set tabstop=4
+:set shiftwidth=4
+:set smarttab
+:set softtabstop=4
+:set mouse=a
+
+call plug#begin()
+
+" Various plugins for enhanced functionality
+Plug 'http://github.com/tpope/vim-surround'            " Surrounding: ysw)
+Plug 'https://github.com/preservim/nerdtree'           " File Explorer: NERDTree
+Plug 'https://github.com/tpope/vim-commentary'         " Commenting: gcc & gc
+Plug 'https://github.com/vim-airline/vim-airline'      " Status Bar: vim-airline
+Plug 'https://github.com/ap/vim-css-color'             " CSS Color Preview
+Plug 'https://github.com/rafi/awesome-vim-colorschemes' " Retro Color Schemes
+Plug 'https://github.com/ryanoasis/vim-devicons'       " Developer Icons
+Plug 'https://github.com/tc50cal/vim-terminal'         " Terminal inside Vim
+Plug 'https://github.com/terryma/vim-multiple-cursors' " Multiple Cursors: CTRL + N
+Plug 'https://github.com/preservim/tagbar'             " Code Navigation: Tagbar
+Plug 'https://github.com/godlygeek/tabular'            " Text Alignment: Aligns text
+Plug 'https://github.com/plasticboy/vim-markdown'      " Markdown Support: vim-markdown
+Plug 'https://github.com/tpope/vim-fugitive'           " Git Integration: vim-fugitive
+Plug 'https://github.com/ryanoasis/vim-devicons.git'   " Developer Icons (duplicate)
+" Plug 'https://github.com/Konfekt/vim-wsl-copy-paste.git' " Clipboard Support: WSL copy-paste
+" Plug 'https://github.com/andweeb/presence.nvim.git'  " Discord Presence: vim-presence
+" Plug 'https://github.com/neoclide/coc.nvim'          " Autocompletion: coc.nvim
+
+call plug#end()   
+
+" Key mappings
+
+" F8 toggles Tagbar
+nmap <F8> :TagbarToggle<CR>
+
+" Custom color scheme
+:colorscheme oceanic_material
+
+" Set completion options for a better completion experience
+:set completeopt=preview
+
+" Re-source vimrc with <leader>sv
+nnoremap <leader>sv :source ~/.config/vim/vimrc<CR>
+
+" Toggle NERDTree with <C-t>, find current file in NERDTree with <C-f>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
+" Navigation between windows using Ctrl + direction keys
+nnoremap <silent> <C-k> :wincmd k<CR>   " Move up
+nnoremap <silent> <C-j> :wincmd j<CR>   " Move down
+nnoremap <silent> <C-h> :wincmd h<CR>   " Move left
+nnoremap <silent> <C-l> :wincmd l<CR>   " Move right
+
+" Switch tabs using Escape + h/l (similar to normal mode navigation)
+nnoremap <silent> <Esc>h :tabprevious<CR>
+nnoremap <silent> <Esc>l :tabnext<CR>
+
+" Terminal management
+nnoremap <C-b> :call TermToggle()<cr>
+
+" Helper function to toggle terminal window
+let g:terminal_is_open = 0
+function! TermToggle()
+    if g:terminal_is_open
+        :q                       " Close terminal window
+        let g:terminal_is_open = 0
+    else
+        :below 10 split | :terminal bash " Open a terminal window at the bottom
+        let g:terminal_is_open = 1
+    endif
+endfunction
+
+" Auto close NERDTree if it's the last window
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Automatically close terminal if it's the last buffer in the tab
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && &buftype == 'terminal' | bd! | q | endif
+
