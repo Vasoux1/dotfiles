@@ -166,20 +166,8 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-# --------------------------------------------------------------
-# Customizations for fzf theme
-# --------------------------------------------------------------
-fg="#CBE0F0"
-bg="#1f1e1f"
-bg_highlight="#143652"
-purple="#B388FF"
-blue="#06BCE4"
-cyan="#2CF9ED"
-export FZF_DEFAULT_OPTS="--color=fg:${fg},bg:${bg},hl:${purple},fg+:${fg},bg+:${bg_highlight},hl+:${purple},info:${blue},prompt:${cyan},pointer:${cyan},marker:${cyan},spinner:${cyan},header:${cyan}"
-
 
 ### ALIASES ###
-
 
 #switch between bash and zsh
 alias tobash="sudo chsh $USER -s /bin/bash && echo 'Now log out.'"

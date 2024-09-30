@@ -1,20 +1,26 @@
 # vim: set filetype=sh :
-# my aliases
 
+### EXPORT ###
+export EDITOR='vim'
+export VISUAL='vim'
+
+### ALIASES ###
 
 # eval "$(gh copilot alias -- bash)"
 alias sbash='source ~/.bashrc'
-alias vb='vim ~/.bashrc'
-alias vp='vim ~/.bash_aliases'
-alias vt='vim ~/.tmux.conf'
-alias vn='vim ~/.config/nvim/init.vim'
+alias cd='z'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias vb='$EDITOR ~/.bashrc'
+alias va='$EDITOR ~/.bash_aliases'
+alias vt='$EDITOR ~/.tmux.conf'
+alias vn='$EDITOR ~/.config/nvim/init.vim'
+alias vv='$EDITOR ~/.config/vim/vimrc'
 alias cdwm='cd ~/.config/arco-dwm'
 alias csl='cd ~/.config/arco-slstatus'
 alias ctlsddm='sudo systemctl restart sddm.service'
 alias cbright='echo "$(($(cat /sys/class/backlight/intel_backlight/brightness) / 960))"%'
 alias cbattery='echo "$(cat /sys/class/power_supply/BAT1/capacity)"%' 
-alias ..='cd ..'
-alias ...='cd ../..'
 alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias gits='git status'
 alias gita='git add'
@@ -25,11 +31,25 @@ alias fman='ls /bin | fzf | xargs man'
 alias bat='batcat'
 alias cd='z'
 
-# -- Use fd instead of fzf --
 
-export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+# ----- Bat (better cat) -----
+
+export BAT_THEME=tokyonight_night
+
+# ---- Zoxide (better cd) ----
+ eval "$(zoxide init bash)"
+
+# --------------------------------------------------------------
+# Customizations for fzf theme
+# --------------------------------------------------------------
+fg="#CBE0F0"
+bg="#1f1e1f"
+bg_highlight="#143652"
+purple="#B388FF"
+blue="#06BCE4"
+cyan="#2CF9ED"
+export FZF_DEFAULT_OPTS="--color=fg:${fg},bg:${bg},hl:${purple},fg+:${fg},bg+:${bg_highlight},hl+:${purple},info:${blue},prompt:${cyan},pointer:${cyan},marker:${cyan},spinner:${cyan},header:${cyan}"
+
 
 # Use fd (https://github.com/sharkdp/fd) for listing path candidates.
 # - The first argument to the function ($1) is the base path to start traversal
@@ -42,8 +62,6 @@ _fzf_compgen_path() {
 _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
 }
-
-source ~/fzf-git.sh/fzf-git.sh
 
 export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
@@ -64,10 +82,11 @@ _fzf_comprun() {
 }
 
 
-# ----- Bat (better cat) -----
+# -- Use fd instead of fzf --
 
-export BAT_THEME=tokyonight_night
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
 
-# ---- Zoxide (better cd) ----
- eval "$(zoxide init bash)"
+source ~/fzf-git.sh/fzf-git.sh
 
