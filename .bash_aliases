@@ -23,8 +23,6 @@ alias clearswap='rm -rf ~/.cache/vim/swap/*'
 alias minbright='xbacklight -set 0.1'
 alias fman='ls /bin | fzf | xargs man'
 alias bat='batcat'
-alias mark='gh repo list Markos-Souchlos'
-alias vagg='gh repo list'
 alias cd='z'
 
 # -- Use fd instead of fzf --
