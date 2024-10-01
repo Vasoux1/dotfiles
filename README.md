@@ -19,13 +19,8 @@ To set up your environment with these dotfiles, follow these steps:
     ```
     bash <(curl -s https://gist.github.com/4e0faa69d25793126967b11ccdd7d47d.git)
     ```
-    (or force with the -f flag)
 
 ## Notes
 
 - The script will back up existing dotfiles in your home directory if there are conflicts.
 - Ensure you have Git installed before running the script
-
-# Contributing
-
-Feel free to fork this repository and submit pull requests if you have suggestions or improvements!
