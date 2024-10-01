@@ -17,7 +17,7 @@ To set up your environment with these dotfiles, follow these steps:
     ``` 
 3. Run the script
     ```
-    bash <(curl -s https://gist.github.com/4e0faa69d25793126967b11ccdd7d47d.git)
+    sh <(curl -s https://gist.github.com/4e0faa69d25793126967b11ccdd7d47d.git)
     ```
 
 ## Notes
