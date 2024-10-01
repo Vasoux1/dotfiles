@@ -8,18 +8,18 @@ To set up your environment with these dotfiles, follow these steps:
 
 1. Clone this repository:
    ```bash
-   git clone --bare https://github.com/Vasoux1/configs.git ~/.dotfiles
+   git clone --bare https://github.com/Vasoux1/dotfiles.git ~/.dotfiles
    ```
 
-2. Change into the directory:
-    ``` bash
-    cd ~/.dotfiles
+2. Make an alias so you can work with.
     ```
-
-3. Run the setup script:
-    ```bash
-    ./setup-dotfiles.sh
+    alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+    ``` 
+3. Run the script
     ```
+    bash <(curl -s https://gist.github.com/4e0faa69d25793126967b11ccdd7d47d.git)
+    ```
+    (or force with the -f flag)
 
 ## Notes
 
