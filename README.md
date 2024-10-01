@@ -1,6 +1,6 @@
 ## Setup
 
-A bare repo that sotres my configs
+A bare repo that stores my configs
 
 1. Clone repository:
    ```
