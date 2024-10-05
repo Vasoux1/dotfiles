@@ -164,6 +164,8 @@ fi
 # Load personal bash configurations if available
 [[ -f ~/.bashrc-personal ]] && . ~/.bashrc-personal
 
+[ -f ~/fzf-git.sh/fzf-git.sh ] && source ~/fzf-git.sh/fzf-git.sh  
+
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 

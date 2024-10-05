@@ -30,7 +30,14 @@ alias minbright='xbacklight -set 0.1'
 alias fman='ls /bin | fzf | xargs man'
 alias bat='batcat'
 alias cd='z'
+alias crrepo='./dotfiles/system.sh'
+alias rmrepo='rm -rf dotfiles'
 
+crrepos() {
+  for repo in $(gh repo list | awk '{print $1}' | awk -F/ '{print $2}'); do
+    echo "$repo"
+  done
+}
 
 # ----- Bat (better cat) -----
 
@@ -88,5 +95,4 @@ export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
 
-source ~/fzf-git.sh/fzf-git.sh
 
