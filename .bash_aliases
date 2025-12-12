@@ -1,9 +1,5 @@
 # vim: set filetype=sh :
 
-### EXPORT ###
-export EDITOR='vim'
-export VISUAL='vim'
-
 ### ALIASES ###
 
 # eval "$(gh copilot alias -- bash)"
